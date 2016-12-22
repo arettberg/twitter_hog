@@ -1,4 +1,5 @@
 module RedisWrap
+  REDISTOGO_URL = ENV['REDISTOGO_URL']
   REDIS_HOST_URI = ENV['REDIS_HOST_URI']
   REDIS_PORT = ENV['REDIS_PORT']
   REDIS_DATABASE = 1
@@ -29,6 +30,11 @@ module RedisWrap
   end
 
   def redis
-    @redis ||= Redis.new(host: REDIS_HOST_URI, port: REDIS_PORT, db: REDIS_DATABASE)
+    @redis ||= if REDISTOGO_URL.present?
+      url = URI.parse ENV['REDISTOGO_URL']
+      Redis.new(host: url.host, port: url.port, password: url.password)
+    else
+      Redis.new(host: REDIS_HOST_URI, port: REDIS_PORT, db: REDIS_DATABASE)
+    end
   end
 end

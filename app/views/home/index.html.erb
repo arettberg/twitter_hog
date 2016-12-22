@@ -4,7 +4,7 @@
   <div class="col-md-8 col-lg-6">
     <%= form_tag root_path, method: :get do %>
       <div class="form-group">
-        <%= text_field_tag :username, (@twitter_user&.screen_name || @twitter_username), class: 'form-control' %>
+        <%= text_field_tag :username, (@twitter_user&.screen_name || @twitter_username), placeholder: 'Enter a twitter handle...', class: 'form-control' %>
       </div>
 
       <%= submit_tag 'Search', class: 'btn btn-primary' %>
