@@ -1,0 +1,10 @@
+<li class='list-group-item'>
+  <em class='text-muted'><%= tweet.created_at.strftime('%-m/%d/%Y %l:%M%P') %></em>
+
+  <%= simple_format tweet.text %>
+  <% tweet.user_mentions.each do |mention| %>
+    <% unless mention.screen_name == tweet.user.screen_name %>
+      <%= link_to "@#{mention.screen_name}", root_path(username: mention.screen_name), class: 'label label-sm label-default' %>
+    <% end %>
+  <% end %>
+</li>

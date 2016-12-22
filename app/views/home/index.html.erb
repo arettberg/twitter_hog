@@ -21,10 +21,7 @@
       <% if @tweets.present? %>
         <ul class='list-group'>
           <% @tweets.each do |tweet| %>
-            <li class='list-group-item'>
-              <%= simple_format tweet.text %>
-              <em class='text-muted'><%= tweet.created_at.strftime('%-m/%d/%Y %l:%M%P') %></em>
-            </li>
+            <%= render 'tweet', tweet: tweet %>
           <% end %>
         </ul>
       <% else %>
