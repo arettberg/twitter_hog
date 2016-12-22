@@ -1,0 +1,42 @@
+<h2>Get some tweets!</h2>
+
+<div class="row">
+  <div class="col-md-8 col-lg-6">
+    <%= form_tag root_path, method: :get do %>
+      <div class="form-group">
+        <%= text_field_tag :username, (@twitter_user&.screen_name || @twitter_username), class: 'form-control' %>
+      </div>
+
+      <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<% if @twitter_user %>
+  <hr>
+  <div class="row">
+    <div class="col-md-8">
+      <h4><%= @twitter_user.screen_name %>'s Tweets</h4>
+
+      <% if @tweets.present? %>
+        <ul class='list-group'>
+          <% @tweets.each do |tweet| %>
+            <li class='list-group-item'>
+              <%= simple_format tweet.text %>
+              <em class='text-muted'><%= tweet.created_at.strftime('%-m/%d/%Y %l:%M%P') %></em>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= @username %> has not posted anything
+      <% end %>
+    </div>
+  </div>
+<% elsif @twitter_username.present? %>
+  <hr>
+  <div class="row">
+    <div class="col-md-8">
+      User <%= @twitter_username %> not found
+    </div>
+  </div>
+<% end %>
