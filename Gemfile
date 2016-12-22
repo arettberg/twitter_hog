@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 gem 'pg'
+gem 'redis'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -15,6 +16,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'devise'
 # gem 'omniauth-twitter'
+gem 'twitter'
 
 gem 'bootstrap-sass', '~> 3.3.7'
 
