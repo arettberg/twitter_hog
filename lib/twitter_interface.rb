@@ -1,12 +1,10 @@
-require_relative './redis_wrap.rb'
-
 module TwitterInterface
-  extend RedisWrap
-
   MAX_REQUESTED_TWEETS = 100
   REDIS_NAMESPACE = 'TwitterInterface'
 
   class << self
+    include RedisWrap
+
     def recent_tweets_for_user username, count: 25
       count = MAX_REQUESTED_TWEETS if count > MAX_REQUESTED_TWEETS # no going over
       user = username.is_a?(Twitter::User) ? username : get_user(username)

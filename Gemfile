@@ -25,8 +25,10 @@ group :development, :test do
   gem 'byebug'
   gem 'pry-rails'
 
-  gem 'rspec-rails', '~> 3.5'
   gem 'dotenv-rails'
+
+  gem 'rspec-rails', '~> 3.5'
+  # gem 'webmock'
 end
 
 group :development do

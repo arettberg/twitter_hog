@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe TwitterInterface, type: :module do
-  describe 'caching' do
-    it 'should cache results in redis' do
-      first = TwitterInterface.redis_or('some search'){ 1 }
-      second = TwitterInterface.redis_or('some search'){ 2 }
-      expect(first).to eq(second)
+  describe 'user lookup' do
+    it 'should return nil if username is blank' do
+      expect(TwitterInterface.get_user('')).to be_nil
     end
   end
 end

@@ -2,7 +2,7 @@ module RedisWrap
   REDIS_HOST_URI = ENV['REDIS_HOST_URI']
   REDIS_PORT = ENV['REDIS_PORT']
   REDIS_DATABASE = 1
-  REDIS_DEFAULT_TTL = 5.minutes
+  REDIS_DEFAULT_TTL = 1.minute
 
   def redis_or key, ttl: REDIS_DEFAULT_TTL, cached: true, &block
     if redis.nil?
@@ -23,12 +23,12 @@ module RedisWrap
     end
   end
 
-  def redis
-    @redis ||= Redis.new(host: REDIS_HOST_URI, port: REDIS_PORT, db: REDIS_DATABASE)
-  end
-
   def redis_namespace
     # looks up REDIS_NAMESPACE in the extending context, not here
     "#{self.name}::REDIS_NAMESPACE".safe_constantize || 'RedisWrap'
+  end
+
+  def redis
+    @redis ||= Redis.new(host: REDIS_HOST_URI, port: REDIS_PORT, db: REDIS_DATABASE)
   end
 end
