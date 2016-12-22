@@ -2,6 +2,8 @@
 
 This is a response to the [StackCommerce Dev Challenge](https://github.com/stacksocial/code-challenge/tree/master/ruby/rails-twitter-api)
 
+Check it out in action [here](//frozen-earth-17440.herokuapp.com)
+
 ### Local Setup
 Before booting up, make sure to set the following ENV variables:
 
@@ -38,3 +40,6 @@ This app is already live on [Heroku](//frozen-earth-17440.herokuapp.com), but le
 * At that point you'll be able to add the heroku git remote with `heroku git:remote -a <your-app-name>`, then `git push heroku master` to start the deploy process.
 * set up a redis server with `heroku addon:create redistogo:nano`
 * time to `heroku open` and play around!
+
+### Testing
+I would have hoped to have a more complete test suite, but time has run short. The main holdup was mocking up the Twitter API, which is an extensive task. Might come back to it and add more tests tomorrow.

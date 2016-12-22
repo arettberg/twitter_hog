@@ -10,7 +10,7 @@ module TwitterInterface
       user = username.is_a?(Twitter::User) ? username : get_user(username)
 
       if user
-        redis_or "tweets_for:#{user.screen_name}", ttl: 5.minutes do
+        redis_or "tweets_for:#{user.screen_name}/#{count}", ttl: 5.minutes do
           client.user_timeline user, count: count, response_type: :latest
         end
       end
