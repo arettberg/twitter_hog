@@ -27,9 +27,7 @@ I'm using [Devise](https://github.com/plataformatec/devise) for authentication, 
 The [twitter](https://github.com/sferik/twitter) gem by sferik is by far the most popular gem for accessing Twitter's REST API, so that's a no-brainer. All code involved with accessing the Twitter API can be found in `lib/twitter_interface.rb`. This code was kept separate both in the interest of keeping concerns (not **C**oncerns...) organized, but also for the easy inclusion of `RedisWrap`. If the scope of the API access had been wider a different structure may have been warranted, but given that there are only 2 calls made, this keeps things succinct.
 
 ###### RedisWrap
-This is derived from a Concern I had written for another project which would seamlessly integrate a redis layer into ActiveRecord. The full code isn't public at the moment, but I will publish a Gist soon, hopefully before this project is reviewed.
-
-The core method of RedisWrap (in this context) is the `redis_or` method, which simply takes a key name and either returns the value for that key from redis, or if no value is set runs a block and saves the returned value to redis.
+This is derived from a Concern I had written for another project which would seamlessly integrate a redis layer into ActiveRecord (see [this gist](https://gist.github.com/arettberg/42a17bec5d4d1a1bf2250ddfda22c64b)). The core method of RedisWrap (in this context) is the `redis_or` method, which simply takes a key name and either returns the value for that key from redis, or if no value is set runs a block and saves the returned value to redis.
 
 ### Heroku Deploy
 This app is already live on [Heroku](//frozen-earth-17440.herokuapp.com), but let's say you want to start from scratch.
